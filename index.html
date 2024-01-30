@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <title>Aidan Grupac</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: clip;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+        }
+
+        header,
+        nav,
+        section,
+        footer {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            white-space: nowrap;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            border-top: 2px solid #444;
+        }
+
+        nav ul ul li {
+            padding: 10px 5px;
+        }
+
+        nav li:hover>ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #projects {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 80%;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project {
+            background-color: #c3c3c3;
+            padding: 30px;
+            border-radius: 8px;
+            color: #000000;
+            transition: transform 0.3s;
+            border: 2px solid #999;
+        }
+
+        .project .project-link {
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .project:hover {
+            transform: scale(1.2);
+            border-color: #555;
+            opacity: 1;
+        }
+
+        .project:hover .project-link {
+            opacity: 1;
+        }
+
+        #welcome,
+        #about {
+            text-align: center;
+            max-width: 70%;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #262626;
+            color: #fff;
+        }
+
+        header.dark-mode {
+            background-color: #222;
+        }
+
+        nav.dark-mode {
+            background-color: #333;
+        }
+
+        nav.dark-mode a {
+            color: #fff;
+        }
+
+        section.dark-mode {
+            background-color: #222;
+        }
+
+        footer.dark-mode {
+            background-color: #111;
+        }
+
+        /* Dark mode toggle button styles */
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #scrollToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #555;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Dark mode toggle button -->
+    <button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <header>
+        <h1>Aidan Grupac</h1>
+        <p>Software Developer/Technical Consultant</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#projects">Projects</a>
+                <ul>
+                    <li><a href="#proj1">Image Processor</a></li>
+                    <li><a href="#proj2">AI Tic-Tac-Toe</a></li>
+                    <li><a href="#proj3">Polyalphabetic Cipher</a></li>
+                    <li><a href="#proj4">Blockchain Authenticated Storage</a></li>
+                    <li><a href="#proj5">Merkle Trees to Dynamic Arrays</a></li>
+                    <li><a href="#proj6">Ad Hoc Wireless Network Emulation</a></li>
+                    <li><a href="#proj7">Maze Search</a></li>
+                    <li><a href="#proj8">CPU Scheduler</a></li>
+                    <li><a href="#proj9">Floating Point</a></li>
+                    <li><a href="#proj10">Shell</a></li>
+                    <li><a href="#proj11">GMU Entertainment Finder</a></li>
+                </ul>
+            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>Welcome to My Portfolio</h2>
+        <p>
+            I'm Aidan, a Computer Science student at George Mason University.<br>
+            I'm a programmer proficient in Java, C, HTML, CSS, JavaScript, and Python.
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project">
+                <h3 id="proj1">Image Processor</h3>
+                <p>Java command line program for performing basic modifications of .ppm and .pgm images.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Image-Processor">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj2">AI Tic-Tac-Toe</h3>
+                <p>Java program for playing tic-tac-toe against a human or computer-controlled player.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/AI-Tic-Tac-Toe">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj3">Polyalphabetic Cipher</h3>
+                <p>Java program for encrypting and decrypting text based on a polyalphabetic cipher.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Polyalphabetic-Cipher">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj4">Blockchain Authenticated Storage</h3>
+                <p>Java program to simulate file storage and verification using a blockchain.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Blockchain-Authenticated-Storage">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj5">Merkle Trees to Dynamic Arrays</h3>
+                <p>Java program to simulate file storage and verification using Merkle Trees.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Merkle-Trees">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj6">Ad Hoc Wireless Network Emulation</h3>
+                <p>Java program for ad hoc wireless network emulation using graphs.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Wireless-Network-Emulation">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj7">Maze Search</h3>
+                <p>C program for navigating text file mazes using iterative and recursive searches.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Maze-Search">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj8">CPU Scheduler</h3>
+                <p>C program for simulating a custom CPU scheduler.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/CPU-Scheduler">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj9">Floating Point</h3>
+                <p>C program implementing a custom floating point type and basic arithmetic operations.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Floating-Point">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj10">Shell</h3>
+                <p>C program implementing a custom shell with forking, signals, and I/O.</p>
+                <div class="project-link">
+                    <a href="https://github.com/agrupac/Shell">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj11">GMU Entertainment Finder</h3>
+                <p>Website application for locating and browsing entertainment in the Fairfax area.</p>
+                <div class="project-link">
+                    <a href="https://github.com/wcraig2/MasonEventFinder">GitHub</a>
+                </div>
+            </div>
+            <div class="project">
+                <h3 id="proj12">Portfolio Website</h3>
+                <p>This website!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>
+            phone: 540-551-2342<br>
+            email: adgrupac@gmail.com
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Aidan Grupac. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll-to-top button -->
+    <button id="scrollToTop" onclick="scrollToTop()">Scroll to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // Show/hide scroll-to-top button based on scroll position
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            var scrollToTopButton = document.getElementById("scrollToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopButton.style.display = "block";
+            } else {
+                scrollToTopButton.style.display = "none";
+            }
+        }
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+
+</html>
